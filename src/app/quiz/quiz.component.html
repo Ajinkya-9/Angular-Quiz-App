@@ -1,0 +1,47 @@
+<app-navbar>
+</app-navbar>
+<p>
+  quiz works!: {{quizService.totalScore}}
+</p>
+<div class="row" *ngIf="quizService.qns">
+  <div class="col-sm-8 offset-sm-2">
+    <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
+    <div class="progress">
+      <div class="progress-bar" [style.width.%]="(qnProgress)*10"></div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <span class="card-title">{{qnProgress+1}}</span>
+        <p class="card-text">{{quizService.qns[qnProgress].question}}</p>
+      </div>
+      <ul class="list-group">
+        <ng-container>
+          <label class="form-check-label" for="a" *ngIf="quizService.qns[qnProgress].options.a" >
+            <li class="list-group-item" (click)="answer(a,quizService.qns[qnProgress].ans,quizService.qns[qnProgress]._id)">
+              <input type="radio" class="form-check-input" id="a" #a name="option" value="a">{{quizService.qns[qnProgress].options.a}}
+            </li>
+          </label>
+          <label class="form-check-label" for="b" *ngIf="quizService.qns[qnProgress].options.b" >
+            <li class="list-group-item"  (click)="answer(b,quizService.qns[qnProgress].ans,quizService.qns[qnProgress]._id)">
+              <input type="radio" class="form-check-input" id="b" #b name="option" value="b">{{quizService.qns[qnProgress].options.b}}
+            </li>
+          </label>
+          <label class="form-check-label" for="c" *ngIf="quizService.qns[qnProgress].options.c" >
+            <li class="list-group-item" (click)="answer(c,quizService.qns[qnProgress].ans,quizService.qns[qnProgress]._id)">
+              <input type="radio" class="form-check-input" id="c" #c name="option" value="c">{{quizService.qns[qnProgress].options.c}}
+            </li>
+          </label>
+          <label class="form-check-label" for="d" *ngIf="quizService.qns[qnProgress].options.d" >
+            <li class="list-group-item" (click)="answer(d,quizService.qns[qnProgress].ans,quizService.qns[qnProgress]._id)">
+              <input type="radio" class="form-check-input" id="d" #d name="option" value="d">{{quizService.qns[qnProgress].options.d}}
+            </li>
+          </label>
+        </ng-container>
+
+      </ul>
+      <button class="btn btn-primary" (click)="next(quizService.qns[qnProgress].ans,quizService.qns[qnProgress]._id)">Save & Next</button>
+    </div>
+
+  </div>
+
+</div>

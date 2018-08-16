@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <div class="card">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Quiz Registration</h1>
+        </div>
+        <div class="col-sm-6">
+          <img src="../../assets/images/quiz.png" alt="" class="img-fluid">
+        </div>
+      </div>
+      <div class="card-body">
+        <form #registerForm="ngForm" (ngSubmit)=onSubmit(registerForm.value)>
+          <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" #name ngModel placeholder="Enter fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="Email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email" #email ngModel placeholder="Enter email-id" required>
+          </div>
+          <button type="submit" class="btn btn-success  col-sm-12">Submit</button>
+        </form>
+      </div>
+      {{registerForm.value | json}}
+    </div>
+  </div>
+</div>
+
